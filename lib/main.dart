@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:restaurante_ok/screens/splash_specialty_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const SplashSpecialtyScreen());
 }
 
 class MyApp extends StatelessWidget {
