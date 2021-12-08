@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:restaurante_ok/Helpers/Services/api_service.dart';
+import 'package:restaurante_ok/Helpers/components/rounded_button.dart';
+import 'package:restaurante_ok/models/entities/especialidad_entity.dart';
 import 'package:restaurante_ok/models/entities/post_entity.dart';
 import 'package:restaurante_ok/models/response/Response.dart';
 import 'package:restaurante_ok/models/response/especialidad_response.dart';
+import 'package:restaurante_ok/screens/login_screen.dart';
+import 'package:restaurante_ok/screens/register_or_login_screen.dart';
 
 
 class SplashSpecialtyScreen extends StatelessWidget {
+  static const String id= 'splash_specialty_screen';
   const SplashSpecialtyScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Fetch Data Example',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Scaffold(
+    return  Scaffold(
         //appBar: AppBar(title: Text('Fetch Data Example'),  ),
         body: Center(
           child: FutureBuilder<Response>(
@@ -31,7 +31,7 @@ class SplashSpecialtyScreen extends StatelessWidget {
             },
           ),
         ),
-      ),
+
     );
   }
 
@@ -85,22 +85,32 @@ class SplashSpecialtyScreen extends StatelessWidget {
         children: <Widget>[
           Container(
             width: double.infinity,
-            padding: EdgeInsets.symmetric(vertical: 60),
-            decoration: BoxDecoration(
+            padding: const EdgeInsets.symmetric(vertical: 60),
+            decoration: const BoxDecoration(
                 gradient: LinearGradient(
                     colors: [Colors.orangeAccent, Colors.deepOrange])),
             child: Image.network(
-              especialidad!.urlFoto!,
+              especialidad.urlFoto!,
               height: 200,
             ),
           ),
-          SizedBox(height: 30),
+          const SizedBox(height: 30),
           Text(
-            especialidad!.descripcion!,
+            'Nombre: ${especialidad.nombre!}',
             textAlign: TextAlign.center,
             style: const TextStyle(fontWeight: FontWeight.bold),
           ),
-          //RoundedButton(title: 'Iniciar', colour: Colors.lightBlueAccent, onPressed: (){Navigator.pushNamed(context, LoginOrRegisterPage.id);}),
+          Text(
+            'Descripcion: ${especialidad.descripcion!}',
+            textAlign: TextAlign.center,
+            style: const TextStyle(fontWeight: FontWeight.bold),
+          ),
+          RoundedButton(title: 'Iniciar', colour: Colors.lightBlueAccent, onPressed: ()
+          {
+            Navigator.pushNamed(context, RegisterOrLoginScreen.id);
+            //Navigator.push(context, new MaterialPageRoute(builder: (context) => new LoginScreen()));
+          }
+            ),
 
         ],
       ),
