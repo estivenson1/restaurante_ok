@@ -40,7 +40,7 @@ class SplashSpecialtyScreen extends StatelessWidget {
       fit: StackFit.expand ,
       children: <Widget> [
         Container(
-          decoration: const BoxDecoration(color: Colors.yellow),
+          decoration: const BoxDecoration(color: Color(0xffff3d00)),
         ),
         Column(
           mainAxisAlignment: MainAxisAlignment.start,

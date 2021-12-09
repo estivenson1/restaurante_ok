@@ -19,7 +19,7 @@ class _LoginScreenState extends State<LoginScreen> {
   String _emailError='';
   bool _emailShowError= false;
 
-  String _password ='123456';
+  String _password ='';
   String _passwordError ='';
   bool _passwordShowError = false;
 
@@ -30,7 +30,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    _email='ortega@yopmail.com';
     return Scaffold(
       body: Stack(
         children: <Widget> [
@@ -152,11 +151,15 @@ class _LoginScreenState extends State<LoginScreen> {
     });
 
     var response = await ApiService.login(_email, _password);
-    print('${response.isSuccess}**********************************************************');
 
     setState(() {
       _showLoader = false;
     });
+    //var respCategoria = await ApiService.getCategorias();
+    //print('XXXXXXXXXXXXXXXXX ${respCategoria!.isSuccess}');
+    if(response.isSuccess) {
+      Navigator.pushNamed(context, HomeScreen.id);
+    }
 
   }
 
